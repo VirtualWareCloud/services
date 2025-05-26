@@ -10,7 +10,7 @@
       --gold: #d4af37;
       --black: #0a0a0a;
       --white: #ffffff;
-      --header-bg: linear-gradient(to right, #1a1f2b, #0c1120);
+      --header-bg: #dfe3e7;
       --lux-gradient: linear-gradient(135deg, #d4af37, #ad8d2f, #2c003e);
     }* {
   margin: 0;
@@ -37,7 +37,10 @@ header {
 }
 
 .logo {
-  height: 50px;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .share-button {
@@ -121,22 +124,23 @@ p.subtitle {
 }
 
 .card {
-  background: rgba(30, 30, 30, 0.9);
+  background: rgba(30, 30, 30, 0.95);
   padding: 25px;
   border-radius: 20px;
   border: 2px solid var(--gold);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
   cursor: pointer;
+  transform-style: preserve-3d;
 }
 
 .card:hover {
-  transform: scale(1.03) rotateX(2deg);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+  transform: translateY(-8px) scale(1.02) rotateX(2deg);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
 }
 
 .card:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .card h3 {
