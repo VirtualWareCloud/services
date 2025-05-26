@@ -1,228 +1,313 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VirtualWareCloud – Services</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --gold: #d4af37;
       --black: #0a0a0a;
       --white: #ffffff;
-      --deep: #121212;
+      --header-bg: #1e1e1e;
       --lux-gradient: linear-gradient(135deg, #d4af37, #ad8d2f, #2c003e);
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    }
 
-html, body {
-  height: 100%;
-  background: radial-gradient(ellipse at center, #000000 0%, #0d0d0d 100%);
-  color: var(--white);
-  font-family: 'Poppins', sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background-color: #0d0d0d;
-  border-bottom: 1px solid #333;
-}
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(ellipse at center, #000000 0%, #0d0d0d 100%);
+      color: var(--white);
+    }
 
-.share-button {
-  color: var(--gold);
-  font-size: 1.2rem;
-  cursor: pointer;
-}
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background-color: var(--header-bg);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.logo {
-  height: 50px;
-}
+    .logo {
+      height: 45px;
+    }
 
-nav a {
-  margin-left: 20px;
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 500;
-}
+    .share-button {
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-nav a:hover {
-  color: var(--gold);
-}
+    .share-button i {
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+    }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 20px;
-  text-align: center;
-  animation: fadeIn 2s ease-in-out;
-}
+    nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 10px;
+    }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: var(--gold);
-  margin-bottom: 20px;
-}
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px;
+      border-bottom: 1px solid #333;
+    }
 
-p.subtitle {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 40px;
-  text-align: center;
-  width: 100%;
-}
+    nav a:last-child {
+      border-bottom: none;
+    }
 
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
-}
+    .hamburger {
+      font-size: 1.5rem;
+      color: var(--white);
+      cursor: pointer;
+    }
 
-.card {
-  background: rgba(30, 30, 30, 0.9);
-  padding: 25px;
-  border-radius: 20px;
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+    .nav-open nav {
+      display: flex;
+      animation: slideIn 0.3s ease forwards;
+    }
 
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-}
+    @keyframes slideIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
 
-.card h3 {
-  color: var(--gold);
-  margin-bottom: 15px;
-}
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
 
-.card p {
-  font-size: 0.95rem;
-  color: #ddd;
-}
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
 
-.contact-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 400px;
-  margin: 0 auto;
-}
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 40px;
+      text-align: center;
+      width: 100%;
+    }
 
-.contact-buttons a {
-  text-decoration: none;
-  background: var(--lux-gradient);
-  padding: 14px;
-  border-radius: 10px;
-  color: var(--black);
-  font-weight: bold;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-}
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
 
-.contact-buttons a:hover {
-  background: #000;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-}
+    .card {
+      background: rgba(30, 30, 30, 0.9);
+      padding: 25px;
+      border-radius: 20px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
 
-footer {
-  margin-top: 50px;
-  padding: 20px;
-  background-color: #0a0a0a;
-  border-top: 1px solid #333;
-  text-align: center;
-}
+    .card:hover {
+      transform: scale(1.03) rotateX(2deg);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    }
 
-footer .icons {
-  margin-top: 10px;
-}
+    .card:active {
+      transform: scale(0.97);
+    }
 
-footer .icons a {
-  color: var(--gold);
-  margin: 0 10px;
-  font-size: 1.3rem;
-  transition: 0.3s;
-}
+    .card h3 {
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
 
-footer .icons a:hover {
-  color: var(--white);
-}
+    .card p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
 
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
 
+    .contact-buttons a {
+      text-decoration: none;
+      background: var(--lux-gradient);
+      padding: 14px;
+      border-radius: 10px;
+      color: var(--black);
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .contact-buttons a:hover {
+      background: #000;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #0a0a0a;
+      border-top: 1px solid #333;
+      text-align: center;
+    }
+
+    footer .icons {
+      margin-top: 10px;
+    }
+
+    footer .icons a {
+      color: var(--gold);
+      margin: 0 10px;
+      font-size: 1.3rem;
+      transition: 0.3s;
+    }
+
+    footer .icons a:hover {
+      color: var(--white);
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        border: none;
+        background: none;
+        padding: 0;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      nav a {
+        margin-left: 20px;
+        border-bottom: none;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="share-button" onclick="navigator.share({ title: 'VirtualWareCloud Services', url: window.location.href })">
-      <i class="fas fa-share-alt"></i>
+      <i class="fas fa-share-from-square"></i>
     </div>
     <img src="images/VirtualWareCloud.png" alt="Logo" class="logo">
+    <div class="hamburger" onclick="document.body.classList.toggle('nav-open')">
+      <i class="fas fa-bars"></i>
+    </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
+      <a href=\"index.html\">Home</a>
+      <a href=\"services.html\">Services</a>
+      <a href=\"contact.html\">Contact</a>
     </nav>
-  </header>  <div class="container">
+  </header>
+
+  <div class="container">
     <h1>Our Premium Services</h1>
-    <p class="subtitle">Crafted with elegance. Engineered for impact.</p><div class="services">
-  <div class="card">
-    <h3>Custom Website Design</h3>
-    <p>Responsive, modern, mobile-first websites with luxury branding and animations.</p>
-  </div>
-  <div class="card">
-    <h3>eCommerce Solutions</h3>
-    <p>Shopify & WooCommerce setups, payment gateways, product pages and automation.</p>
-  </div>
-  <div class="card">
-    <h3>Virtual Business Cards</h3>
-    <p>Elegant vCards with social media integration, WhatsApp CTA, and contact download.</p>
-  </div>
-  <div class="card">
-    <h3>Landing Pages</h3>
-    <p>High-converting pages built to launch new services or drive targeted campaigns.</p>
-  </div>
-  <div class="card">
-    <h3>Booking Systems</h3>
-    <p>Integrated scheduling with WhatsApp, Calendly, Google Calendar & payment flows.</p>
-  </div>
-  <div class="card">
-    <h3>Branding & Identity</h3>
-    <p>Logos, color palettes, tone of voice and luxury-first visual themes.</p>
-  </div>
-</div>
+    <p class="subtitle">Crafted with elegance. Engineered for impact.</p>
 
-<div class="contact-buttons">
-  <a href="https://wa.me/27820412395?text=Hi%20Thabo%2C%20I%20saw%20your%20services%20on%20VirtualWareCloud%20and%20would%20like%20to%20chat."><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-  <a href="mailto:thabo.phaahla@virtualwarecloud.com?subject=VirtualWareCloud%20Services%20Request"><i class="fas fa-envelope"></i> Email Us</a>
-  <a href="tel:+27820412395"><i class="fas fa-phone"></i> Call Now</a>
-</div>
+    <div class="services">
+      <div class="card">
+        <h3>Custom Website Design</h3>
+        <p>Responsive, mobile-first websites with luxury branding and modern UX features.</p>
+      </div>
+      <div class="card">
+        <h3>eCommerce Solutions</h3>
+        <p>Shopify & WooCommerce setups with automation and integrated payment systems.</p>
+      </div>
+      <div class="card">
+        <h3>Virtual Business Cards</h3>
+        <p>Elegant vCards with WhatsApp CTA, download links, and animated profiles.</p>
+      </div>
+      <div class="card">
+        <h3>Landing Pages</h3>
+        <p>High-conversion launch pages optimized for marketing and email capture.</p>
+      </div>
+      <div class="card">
+        <h3>Booking Systems</h3>
+        <p>Automated scheduling via WhatsApp, Google Calendar & built-in reminders.</p>
+      </div>
+      <div class="card">
+        <h3>Elegant Wedding Websites</h3>
+        <p>Luxury wedding sites with rotating hero galleries, RSVP forms, music, and WhatsApp integration.</p>
+      </div>
+      <div class="card">
+        <h3>Branding & Identity</h3>
+        <p>Premium logos, digital tone, visual language, and gold-themed style guides.</p>
+      </div>
+    </div>
 
-<footer>
-  <p>&copy; 2025 VirtualWareCloud. All rights reserved.</p>
-  <div class="icons">
-    <a href="https://wa.me/27820412395" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="mailto:thabo.phaahla@virtualwarecloud.com"><i class="fas fa-envelope"></i></a>
-    <a href="tel:+27820412395"><i class="fas fa-phone"></i></a>
-    <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://tiktok.com/@virtualwarecloud" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
-</footer>
+    <div class="contact-buttons">
+      <a href="https://wa.me/27820412395?text=Hi%20Thabo%2C%20I%20saw%20your%20services%20on%20VirtualWareCloud%20and%20would%20like%20to%20chat.">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="mailto:thabo.phaahla@virtualwarecloud.com?subject=VirtualWareCloud%20Services%20Request">
+        <i class="fas fa-envelope"></i> Email Us</a>
+      <a href="tel:+27820412395">
+        <i class="fas fa-phone"></i> Call Now</a>
+    </div>
 
+    <footer>
+      <p>&copy; 2025 VirtualWareCloud. All rights reserved.</p>
+      <div class="icons">
+        <a href="https://wa.me/27820412395" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:thabo.phaahla@virtualwarecloud.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+27820412395"><i class="fas fa-phone"></i></a>
+        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@virtualwarecloud" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </footer>
   </div>
+
+  <script>
+    // Auto-close nav on mobile after clicking link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+      });
+    });
+  </script>
 </body>
 </html>
