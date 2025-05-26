@@ -37,6 +37,18 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: none;
+}
+
+.header-rope {
+  height: 8px;
+  background: repeating-linear-gradient(45deg, #888 0 10px, #ccc 10px 20px);
+  animation: ropeMove 4s linear infinite;
+}
+
+@keyframes ropeMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
 }
 
 .logo {
@@ -47,7 +59,7 @@ header {
 }
 
 .share-button {
-  color: var(--accent);
+  color: #000;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -82,7 +94,7 @@ nav a:last-child {
 
 .hamburger {
   font-size: 1.5rem;
-  color: var(--accent);
+  color: #000;
   cursor: pointer;
 }
 
@@ -245,7 +257,8 @@ footer .icons a:hover {
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
     </nav>
-  </header>  <div class="container">
+  </header>
+  <div class="header-rope"></div>  <div class="container">
     <h1>Our Premium Services</h1>
     <p class="subtitle">Crafted with elegance. Engineered for impact.</p><div class="services">
   <div class="card">
