@@ -293,6 +293,11 @@
       .footer-icon { padding: .24rem; }
       .footer-credit { font-size: .83rem;}
     }
+.share-btn:hover, .share-btn:focus {
+  background: none !important;
+  box-shadow: none !important;
+}
+
   </style>
   <script>
     // Hamburger and mobile nav
@@ -335,18 +340,21 @@
 <body>
 <!-- ===== HEADER ===== -->
 <header>
-  <div class="header-wrap">
-    <a class="header-logo" href="index.html">
+  <div class="header-wrap" style="display:flex;align-items:center;justify-content:center;position:relative;">
+    <!-- Share icon left, absolutely positioned -->
+    <button class="share-btn" id="shareBtn" title="Share"
+      style="position:absolute;left:1.2rem;top:50%;transform:translateY(-50%);background:none;box-shadow:none;padding:0;border:none;">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#8fd6ff" style="height:32px;width:32px;">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"/>
+      </svg>
+    </button>
+    <!-- Centered logo -->
+    <a class="header-logo" href="index.html" style="margin:0 auto;">
       <img src="https://github.com/VirtualWareCloud/services/blob/main/images%2FVirtualWareCloud.png?raw=true" alt="VirtualWareCloud Logo"/>
-
     </a>
-    <div class="header-actions">
-      <button class="share-btn" id="shareBtn" title="Share">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15"/>
-        </svg>
-      </button>
+    <!-- Hamburger & Nav: absolute right -->
+    <div style="position:absolute;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:1.1rem;">
       <nav class="header-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -367,6 +375,7 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
 
 <!-- ===== MAIN BODY ===== -->
 <main>
