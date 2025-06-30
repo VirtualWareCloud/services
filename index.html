@@ -9,8 +9,7 @@
   <style>
     :root {
       --silver: #e5e9ef;
-      --glass: rgba(255,255,255,0.14);
-      --gloss: rgba(255,255,255,0.38);
+      --glass: rgba(255,255,255,0.13);
       --primary: #222d3a;
       --accent: #8fd6ff;
       --shadow: 0 8px 40px #55d5fd44, 0 2px 8px #fff8, 0 0 36px #c4d8e955;
@@ -35,7 +34,6 @@
       background: linear-gradient(135deg,rgba(30,40,54,0.85) 0%,rgba(45,60,90,0.7) 65%,rgba(255,255,255,0.07) 100%);
       backdrop-filter: blur(1.2px);
     }
-    /* HEADER */
     header {
       background: rgba(20,27,44,0.94);
       box-shadow: 0 2px 16px #2ec0ff30;
@@ -51,12 +49,19 @@
       display: flex; align-items: center; gap: 0.8rem; text-decoration: none;
     }
     .header-logo img {
-      height: 44px; border-radius: 50%;
-      box-shadow: 0 1.5px 8px #89d8ffcc;
+      height: 48px; width: 48px; object-fit: cover;
+      border-radius: 50%;
+      border: 2.5px solid #e7fafd;
       background: #fff;
+      box-shadow: 0 3px 22px #bbf3ffcc, 0 0 0 5px #c4e8ff38;
+      transition: box-shadow .18s, border-color .18s;
+    }
+    .header-logo img:hover {
+      box-shadow: 0 7px 38px #ffffffcc, 0 0 0 8px #99e9ff55;
+      border-color: #e1f5ff;
     }
     .header-title {
-      font-weight: 800; font-size: 1.43rem; color: #f8fafd; letter-spacing: 1.2px;
+      font-weight: 800; font-size: 1.47rem; color: #f8fafd; letter-spacing: 1.2px;
       text-shadow: 0 2px 16px #fff5, 0 1.5px 6px #00e4ff38;
     }
     .header-title span { color: var(--accent); }
@@ -68,7 +73,6 @@
       text-decoration: none; transition: color 0.2s;
       padding: 0.5rem 1.1rem; border-radius: 1.2rem;
       font-size: 1.04rem; letter-spacing: 0.3px;
-      position: relative;
       border: 1.5px solid transparent;
     }
     nav.main-nav a.active,
@@ -120,10 +124,8 @@
     @media (max-width: 600px) {
       .header-title { font-size: 1.05rem; }
       .header-bar { padding: 0.6rem 0.4rem; }
-      .header-logo img { height: 36px;}
+      .header-logo img { height: 38px; width: 38px;}
     }
-
-    /* MAIN CONTENT */
     main {
       flex: 1 1 auto;
       display: flex; flex-direction: column; align-items: center;
@@ -182,8 +184,6 @@
       margin-bottom: 1.7rem; min-height: 70px;
       text-shadow: 0 2px 8px #a6dcff33;
     }
-
-    /* SILVER GLASSY BUTTONS */
     .card-3d .pick-btn {
       margin-top: auto;
       background: linear-gradient(120deg, #f6fafd 0%, #e1e7ee 60%, #fafdff 100%);
@@ -236,8 +236,6 @@
     .card-3d .pick-btn:focus {
       box-shadow: 0 0 0 3px #b1e7ffcc, 0 6px 18px #c5eaff66;
     }
-
-    /* Footer */
     footer {
       background: rgba(10,18,30,0.93);
       color: #e8f6ff;
@@ -274,12 +272,30 @@
       .footer-credit { font-size: .83rem;}
     }
   </style>
+  <script>
+    // Hamburger functionality
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const btn = document.getElementById('menuBtn');
+      const nav = document.getElementById('mobileMenu');
+      btn && btn.addEventListener('click', () => {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      });
+      btn && btn.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      });
+    });
+    // Pick Service Button handler (demo)
+    function pickService(service){
+      alert("Service selected: "+service);
+      // Integrate your real workflow here!
+    }
+  </script>
 </head>
 <body>
 <header>
   <div class="header-bar">
     <a class="header-logo" href="index.html">
-      <img src="images/logo.png" alt="VirtualWareCloud Logo"/>
+      <img src="https://github.com/VirtualWareCloud/services/blob/main/images%2FVirtualWareCloud.png?raw=true" alt="VirtualWareCloud Logo"/>
       <span class="header-title">VIRTUALWARE<span> CLOUD</span></span>
     </a>
     <nav class="main-nav">
@@ -291,28 +307,3 @@
     </nav>
     <div class="hamburger" id="menuBtn" aria-label="Open menu" tabindex="0" role="button">
       <span></span><span></span><span></span>
-    </div>
-  </div>
-  <nav class="mobile-nav" id="mobileMenu" style="display:none">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-<main>
-  <div class="title-3d">Explore Our Premium Cloud Services</div>
-  <div class="cards-container">
-    <div class="card-3d">
-      <div class="card-title">Custom Website Design</div>
-      <div class="card-desc">
-        Modern, mobile-first websites crafted for your brand. Stunning visuals, world-class UX, and SEO-optimized for maximum reach.
-      </div>
-      <button class="pick-btn" onclick="pickService('Custom Website Design')">Pick Service</button>
-    </div>
-    <div class="card-3d">
-      <div class="card-title">Cloud Solutions & Hosting</div>
-      <div class="card-desc">
-        Ultra-fast, secure cloud hosting with automated backups, SSL, and scalable resources. Hassle-free migrations and 24/7 support.
-      </div
